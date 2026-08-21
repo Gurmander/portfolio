@@ -21,8 +21,12 @@
     content="{{ .Description | default site.Params.description }}"
   >
 
-  {{ $css := resources.Get "css/main.css" }}
-  <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+  {{ $css := resources.Get "css/main.css" | minify | fingerprint "sha256" }}
+  <link
+    rel="stylesheet"
+    href="{{ $css.RelPermalink }}"
+    integrity="{{ $css.Data.Integrity }}"
+  >
 
   <script>
     (function () {
