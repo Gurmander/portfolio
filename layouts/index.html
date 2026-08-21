@@ -1,0 +1,92 @@
+{{ define "main" }}
+
+<section id="about" class="intro">
+  <h1>{{ hugo.Data.site.name }}</h1>
+
+  <div class="profile-images" aria-label="Profile photos">
+    {{ range seq 7 }}
+      {{ $profileImage := printf "images/profile_images/profile_%d.webp" . }}
+      <img
+        src="{{ $profileImage | relURL }}"
+        alt=""
+        width="96"
+        height="96"
+      >
+    {{ end }}
+  </div>
+
+  <p>
+    {{ hugo.Data.site.tagline }}
+  </p>
+
+  <p>
+  <!--List this: Email: Gurmandersinghmaan@gmail.com, whatsapp only phone: +1 7786815059 -->
+    <a href="mailto:gurmandersinghmaan@gmail.com">Email</a>
+    ·
+    <a href="https://wa.me/17786815059">WhatsApp</a>
+    .    
+    <a href="{{ hugo.Data.site.github }}">GitHub</a>
+    ·
+    <a href="{{ hugo.Data.site.linkedin }}">LinkedIn</a>
+    ·
+    <a href="{{ hugo.Data.site.youtube }}">YouTube</a>
+    ·
+    <a href="{{ hugo.Data.site.resume | relURL }}">Resume</a>
+  </p>
+
+  <p>
+    I'm a Software Developer currently completing a BS in Data Science
+    and Applications at IIT Madras, with interests across full-stack
+    development, backend engineering, and AI/ML.
+  </p>
+
+</section>
+
+<hr>
+
+<section>
+  <h2>Projects</h2>
+
+  <ul class="compact-projects">
+    {{ range hugo.Data.projects }}
+      {{ $projectURL := printf "projects/#%s" (anchorize .title) }}
+      <li>
+        <a href="{{ $projectURL | relURL }}">{{ .title }}</a>
+      </li>
+    {{ end }}
+  </ul>
+
+  <p><a href="{{ "projects/" | relURL }}">View all projects →</a></p>
+
+</section>
+
+<hr>
+
+<section>
+  <h2>Recent Writing</h2>
+
+  {{ range first 5 (
+      where site.RegularPages.ByDate.Reverse
+      "Section"
+      "blog"
+  ) }}
+
+  <p class="recent-post">
+    <span class="muted">
+      {{ .Date.Format "02 Jan 2006" }}
+    </span>
+
+    <a href="{{ .RelPermalink }}">
+      {{ .Title }}
+    </a>
+  </p>
+
+  {{ end }}
+
+  <p>
+    <a href="{{ "blog/" | relURL }}">View all posts →</a>
+  </p>
+
+</section>
+
+{{ end }}

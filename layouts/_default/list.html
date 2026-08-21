@@ -1,0 +1,37 @@
+{{ define "main" }}
+
+<header>
+  <h1>{{ .Title }}</h1>
+
+  {{ with .Description }}
+    <p>{{ . }}</p>
+  {{ end }}
+</header>
+
+{{ $pages := .Pages.ByDate.Reverse }}
+
+{{ range $pages }}
+
+<article class="post-list-item">
+
+  <time class="muted">
+    {{ .Date.Format "02 Jan 2006" }}
+  </time>
+
+  <div>
+    <h3>
+      <a href="{{ .RelPermalink }}">
+        {{ .Title }}
+      </a>
+    </h3>
+
+    {{ with .Description }}
+      <p>{{ . }}</p>
+    {{ end }}
+  </div>
+
+</article>
+
+{{ end }}
+
+{{ end }}

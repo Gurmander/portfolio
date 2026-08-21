@@ -1,0 +1,34 @@
+{{ define "main" }}
+
+<article class="search-page">
+
+  <h1>{{ .Title }}</h1>
+
+  {{ with .Content }}
+    <div class="search-intro">
+      {{ . }}
+    </div>
+  {{ end }}
+
+  <div id="search"></div>
+
+</article>
+
+{{ $pagefindPath := "pagefind/" | relURL }}
+
+<link href="{{ $pagefindPath }}pagefind-ui.css" rel="stylesheet">
+
+<script src="{{ $pagefindPath }}pagefind-ui.js"></script>
+
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    new PagefindUI({
+      element: "#search",
+      showSubResults: true,
+      bundlePath: "{{ $pagefindPath }}",
+      baseUrl: "{{ site.Home.RelPermalink }}"
+    });
+  });
+</script>
+
+{{ end }}

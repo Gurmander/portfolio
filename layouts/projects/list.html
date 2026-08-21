@@ -1,0 +1,41 @@
+{{ define "main" }}
+
+<header>
+  <h1>{{ .Title }}</h1>
+
+  {{ with .Description }}
+    <p>{{ . }}</p>
+  {{ end }}
+</header>
+
+{{ range hugo.Data.projects }}
+
+<article id="{{ anchorize .title }}" class="project">
+  <h2>{{ .title }}</h2>
+
+  {{ with .achievement }}
+    <p class="muted">{{ . }}</p>
+  {{ end }}
+
+  <p>{{ .description }}</p>
+
+  <p class="muted">{{ delimit .technologies " · " }}</p>
+
+  {{ if or .github .live .video }}
+    <p>
+      {{ with .github }}
+        <a href="{{ . }}" target="_blank" rel="noopener">GitHub</a>
+      {{ end }}
+      {{ with .live }}
+        <a href="{{ . }}" target="_blank" rel="noopener">Live</a>
+      {{ end }}
+      {{ with .video }}
+        <a href="{{ . }}" target="_blank" rel="noopener">Video</a>
+      {{ end }}
+    </p>
+  {{ end }}
+</article>
+
+{{ end }}
+
+{{ end }}

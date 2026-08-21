@@ -1,0 +1,28 @@
+{{ define "main" }}
+
+<article class="article">
+
+  <header class="article-header">
+
+    <h1>{{ .Title }}</h1>
+
+    <p class="muted">
+      {{ .Date.Format "2 January 2006" }}
+      · {{ .ReadingTime }} min read
+    </p>
+
+    {{ with .Params.tags }}
+    <p class="muted">
+      {{ delimit . " · " }}
+    </p>
+    {{ end }}
+
+  </header>
+
+  <div class="article-content">
+    {{ .Content }}
+  </div>
+
+</article>
+
+{{ end }}

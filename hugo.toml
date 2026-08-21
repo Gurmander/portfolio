@@ -1,0 +1,25 @@
+baseURL = "http://localhost:1313/"
+locale = "en-us"
+title = "Gurmander Singh Maan"
+
+enableRobotsTXT = true
+
+[pagination]
+pagerSize = 10
+
+[taxonomies]
+category = "categories"
+tag = "tags"
+
+[params]
+description = "Personal website of Gurmander Singh Maan — software development, backend engineering, AI/ML, projects and technical writing."
+
+[markup]
+  [markup.highlight]
+    noClasses = false
+    codeFences = true
+    guessSyntax = true
+
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

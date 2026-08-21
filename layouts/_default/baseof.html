@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="{{ site.Language.Locale }}">
+<head>
+  <meta charset="utf-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <title>
+    {{ if .IsHome }}
+      {{ site.Title }}
+    {{ else }}
+      {{ .Title }} — {{ site.Title }}
+    {{ end }}
+  </title>
+
+  <meta
+    name="description"
+    content="{{ .Description | default site.Params.description }}"
+  >
+
+  {{ $css := resources.Get "css/main.css" }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+
+  <script>
+    (function () {
+      const saved = localStorage.getItem("theme");
+
+      if (
+        saved === "dark" ||
+        (!saved &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      }
+    })();
+  </script>
+</head>
+
+<body>
+
+  {{ partial "header.html" . }}
+
+  <main class="container" data-pagefind-body>
+    {{ block "main" . }}{{ end }}
+  </main>
+
+  {{ partial "footer.html" . }}
+
+</body>
+</html>

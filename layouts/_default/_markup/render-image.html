@@ -1,0 +1,18 @@
+{{- $destination := .Destination -}}
+{{- $isRemote := or
+  (strings.HasPrefix $destination "http://")
+  (strings.HasPrefix $destination "https://")
+  (strings.HasPrefix $destination "//")
+  (strings.HasPrefix $destination "data:")
+-}}
+
+{{- if not $isRemote -}}
+  {{- $destination = strings.TrimPrefix "/" $destination -}}
+  {{- $destination = $destination | relURL -}}
+{{- end -}}
+
+<img
+  src="{{ $destination | safeURL }}"
+  alt="{{ .Text }}"
+  {{- with .Title }} title="{{ . }}"{{ end -}}
+>

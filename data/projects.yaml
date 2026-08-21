@@ -1,0 +1,55 @@
+- title: "Syngenta Field Force Intelligence"
+  achievement: "IIT Madras × Syngenta Hackathon — Best Runner-up"
+  description: "AI-assisted field operations platform combining route optimization, geospatial processing, contextual route analysis, and voice interaction for agricultural field representatives."
+  technologies:
+    - FastAPI
+    - React
+    - Google OR-Tools
+    - OSRM
+    - GitHub Actions
+  live: "https://syngentahackathon.netlify.app/"
+  github: ""
+  video: "https://www.youtube.com/watch?v=cGh5quoFujw&t=6s&pp=ygUXc3luZ2VudGEgaGFja2F0aG9uIGlpdG0%3D"
+
+- title: "Urban Fix"
+  description: "Full-stack civic issue management platform for reporting, assigning, verifying, and resolving municipal complaints through role-based workflows, with AI-assisted image analysis and geolocation-based ward assignment."
+  technologies:
+    - FastAPI
+    - PostgreSQL
+    - SQLAlchemy
+    - Vue.js
+    - YOLOv11
+    - Gemini Vision
+    - NVIDIA Vision
+    - Docker
+    - GitHub Actions
+  github: ""
+  live: ""
+  video: ""
+
+- title: "Messy Mashup — Music Genre Classification"
+  achievement: "0.945 Macro F1 · Rank 86/1,119 · Top 8%"
+  description: "Deep-learning pipeline for music genre classification under noisy, distribution-shifted conditions using synthetic augmentation and multiple neural network architectures."
+  technologies:
+    - PyTorch
+    - Librosa
+    - Torchaudio
+    - CNN
+    - Transformers
+    - W&B
+  github: "https://github.com/Gurmander/dlgenai_mashups"
+  live: ""
+  video: ""
+
+- title: "MediCare — Hospital Management System"
+  description: "Full-stack hospital management system with role-based workflows, asynchronous processing, caching, notifications, and cloud document storage."
+  technologies:
+    - Flask
+    - Vue.js
+    - Redis
+    - Celery
+    - SQLAlchemy
+    - Cloudflare R2
+  github: "https://github.com/Gurmander/MediCare"
+  live: ""
+  video: "https://www.youtube.com/watch?v=dEuNWN0dwdU&t=5s"
