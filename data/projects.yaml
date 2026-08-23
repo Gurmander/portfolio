@@ -25,7 +25,7 @@
     - GitHub Actions
   github: ""
   live: ""
-  video: ""
+  video: "https://www.youtube.com/watch?v=RsF_zZ18Gtk&t=337s"
 
 - title: "Messy Mashup — Music Genre Classification"
   achievement: "0.945 Macro F1 · Rank 86/1,119 · Top 8%"
