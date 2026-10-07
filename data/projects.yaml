@@ -23,7 +23,7 @@
     - NVIDIA Vision
     - Docker
     - GitHub Actions
-  github: ""
+  github: "https://github.com/Gurmander/urban_fix"
   live: ""
   video: "https://www.youtube.com/watch?v=RsF_zZ18Gtk"
 

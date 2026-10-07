@@ -1,43 +1,42 @@
 {{ define "main" }}
 
 <section id="about" class="intro">
-  <h1>{{ hugo.Data.site.name }}</h1>
+  <div class="profile-header">
+    <div class="profile-copy">
+      <h1>{{ hugo.Data.site.name }}</h1>
+      <p>{{ hugo.Data.site.tagline }}</p>
 
-  <div class="profile-images" aria-label="Profile photos">
-    {{ range seq 7 }}
-      {{ $profileImage := printf "images/profile_images/profile_%d.webp" . }}
+      <p>
+        I'm a Software Developer currently completing a BS in Data Science
+        and Applications at IIT Madras, with interests across full-stack
+        development, backend engineering, and AI/ML.
+      </p>
+
+      <p>
+        <a href="mailto:gurmandersinghmaan@gmail.com">Email</a>
+        ·
+        <a href="tel:+17786825059">Phone</a>
+        ·
+        <a href="{{ hugo.Data.site.github }}">GitHub</a>
+        ·
+        <a href="{{ hugo.Data.site.linkedin }}">LinkedIn</a>
+        ·
+        <a href="{{ hugo.Data.site.youtube }}">YouTube</a>
+        ·
+        <a href="{{ hugo.Data.site.resume | relURL }}">Resume</a>
+      </p>
+    </div>
+
+    <div class="profile-photo">
       <img
-        src="{{ $profileImage | relURL }}"
-        alt=""
-        width="96"
-        height="96"
+        class="profile-image"
+        src="{{ "images/profile_images/profile_1.webp" | relURL }}"
+        alt="{{ hugo.Data.site.name }}"
+        width="112"
+        height="112"
       >
-    {{ end }}
+    </div>
   </div>
-
-  <p>
-    {{ hugo.Data.site.tagline }}
-  </p>
-
-  <p>
-    <a href="mailto:gurmandersinghmaan@gmail.com">Email</a>
-    ·
-    <a href="tel:+17786825059">Phone</a>
-    ·
-    <a href="{{ hugo.Data.site.github }}">GitHub</a>
-    ·
-    <a href="{{ hugo.Data.site.linkedin }}">LinkedIn</a>
-    ·
-    <a href="{{ hugo.Data.site.youtube }}">YouTube</a>
-    ·
-    <a href="{{ hugo.Data.site.resume | relURL }}">Resume</a>
-  </p>
-
-  <p>
-    I'm a Software Developer currently completing a BS in Data Science
-    and Applications at IIT Madras, with interests across full-stack
-    development, backend engineering, and AI/ML.
-  </p>
 
 </section>
 
@@ -57,6 +56,33 @@
 
   <p><a href="{{ "projects/" | relURL }}">View all projects →</a></p>
 
+</section>
+
+<hr>
+
+<section id="education">
+  <h2>Education</h2>
+
+  {{ range hugo.Data.education }}
+  <article class="education-entry">
+    <div class="education-heading">
+      <strong>{{ .institution }}</strong>
+      <span class="muted">{{ .dates }}</span>
+    </div>
+
+    <p>
+      {{ .program }}
+      {{ with .location }} · {{ . }}{{ end }}
+      {{ with .gpa }} · GPA: {{ . }}{{ end }}
+    </p>
+
+    {{ with .coursework }}
+      <p class="muted">
+        Relevant coursework: {{ delimit . ", " }}.
+      </p>
+    {{ end }}
+  </article>
+  {{ end }}
 </section>
 
 <hr>
