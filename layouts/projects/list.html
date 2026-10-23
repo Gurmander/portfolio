@@ -8,34 +8,40 @@
   {{ end }}
 </header>
 
-{{ range hugo.Data.projects }}
+<div class="projects-grid">
+  {{ range hugo.Data.projects }}
+  <article id="{{ anchorize .title }}" class="project-card">
+    <div class="project-card-header">
+      <h2>{{ .title }}</h2>
 
-<article id="{{ anchorize .title }}" class="project">
-  <h2>{{ .title }}</h2>
+      {{ with .achievement }}
+        <p class="project-achievement">{{ . }}</p>
+      {{ end }}
+    </div>
 
-  {{ with .achievement }}
-    <p class="muted">{{ . }}</p>
+    <p class="project-description">{{ .description }}</p>
+
+    <div class="project-technologies" aria-label="Technologies used">
+      {{ range .technologies }}
+        <span class="technology-tag">{{ . }}</span>
+      {{ end }}
+    </div>
+
+    {{ if or .github .live .video }}
+      <div class="project-links">
+        {{ with .github }}
+          <a href="{{ . }}" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
+        {{ end }}
+        {{ with .live }}
+          <a href="{{ . }}" target="_blank" rel="noopener">Live demo <span aria-hidden="true">↗</span></a>
+        {{ end }}
+        {{ with .video }}
+          <a href="{{ . }}" target="_blank" rel="noopener">Video <span aria-hidden="true">↗</span></a>
+        {{ end }}
+      </div>
+    {{ end }}
+  </article>
   {{ end }}
-
-  <p>{{ .description }}</p>
-
-  <p class="muted">{{ delimit .technologies " · " }}</p>
-
-  {{ if or .github .live .video }}
-    <p>
-      {{ with .github }}
-        <a href="{{ . }}" target="_blank" rel="noopener">GitHub</a>
-      {{ end }}
-      {{ with .live }}
-        <a href="{{ . }}" target="_blank" rel="noopener">Live</a>
-      {{ end }}
-      {{ with .video }}
-        <a href="{{ . }}" target="_blank" rel="noopener">Video</a>
-      {{ end }}
-    </p>
-  {{ end }}
-</article>
-
-{{ end }}
+</div>
 
 {{ end }}

@@ -1,4 +1,4 @@
 ---
 title: "Projects"
-description: "Selected software engineering and machine learning projects."
+description: "Software engineering and machine learning projects."
 ---
